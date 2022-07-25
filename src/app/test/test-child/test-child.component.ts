@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, SimpleChange, SimpleChanges } from '@angular/core';
 
 @Component({
   selector: 'dtiq-test-child',
@@ -7,10 +7,25 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class TestChildComponent implements OnInit {
 
-  @Input() myInputData!: string;
+  myData!: string;
+  @Input()
+  set myInputData(newData: string){
+    this.myData = newData;
+    this.myOutputEvent.emit(this.myData.toUpperCase())
+  };
+
+  @Output() myOutputEvent = new EventEmitter<string>()
   constructor() { }
 
   ngOnInit(): void {
   }
+
+  handleClick() {
+    this.myOutputEvent.emit(this.myInputData.toUpperCase())
+  }
+
+  // ngOnChanges(changes: SimpleChanges) {
+  //   this.myOutputEvent.emit(this.myInputData.toUpperCase())
+  // }
 
 }
