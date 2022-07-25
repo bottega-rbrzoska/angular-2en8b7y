@@ -22,10 +22,10 @@ export class MyTestComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    setInterval(() => {
-        this.counter++;
-        this.testData += this.counter;
-    }, 2000)
+    // setInterval(() => {
+    //     this.counter++;
+    //     this.testData += this.counter;
+    // }, 2000)
   }
   handleChildOutput(data: string) {
     console.log(data)
