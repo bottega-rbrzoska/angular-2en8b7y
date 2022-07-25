@@ -6,13 +6,15 @@
     "dtiq": {
       "projectType": "application",
       "schematics": {
+
         "@schematics/angular:component": {
-          "style": "scss"
+          "style": "scss",
+          "skipTests": true
         }
       },
       "root": "",
       "sourceRoot": "src",
-      "prefix": "app",
+      "prefix": "dtiq",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
