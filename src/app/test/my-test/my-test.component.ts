@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { Test, User } from '@dtiq/models';
+import { TestService } from 'src/app/test.service';
 
 @Component({
   selector: 'dtiq-my-test',
@@ -19,7 +20,7 @@ export class MyTestComponent implements OnInit {
     age: 70
   }]
   testArr: Test[] = []
-  constructor() { }
+  constructor( private _test: TestService) { }
 
   ngOnInit(): void {
     // setInterval(() => {
