@@ -3,8 +3,9 @@ import { CommonModule } from '@angular/common';
 import { LoggerService } from './logger.service';
 import { HttpClientModule } from '@angular/common/http';
 import { INTERCEPTORS } from './interceptors';
+import { LoggerInterceptor } from './logger.interceptor';
 
-
+// const testFactory = (logger: LoggerService) => new MyCustomLogger(LoggerInterceptor)
 
 @NgModule({
   declarations: [],
@@ -12,6 +13,9 @@ import { INTERCEPTORS } from './interceptors';
     CommonModule,
     HttpClientModule
   ],
-  providers: [...INTERCEPTORS]
+  providers: [...INTERCEPTORS,
+    LoggerService
+  // { provide: LoggerService, useFactory: testFactory, deps:[LoggerService]}]
+  ]
 })
 export class CoreModule { }
