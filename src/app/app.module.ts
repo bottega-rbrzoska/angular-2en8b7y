@@ -10,6 +10,8 @@ import { NavigationComponent } from './navigation/navigation.component';
 import { TestChildComponent } from './test/test-child/test-child.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { CoreModule } from './core/core.module';
+import { TestIfDirective } from './test/test-if.directive';
+import { SharedModule } from './shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -23,7 +25,8 @@ import { CoreModule } from './core/core.module';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule, CoreModule
+    AppRoutingModule, CoreModule,
+    SharedModule
   ],
   providers: [],
   bootstrap: [AppComponent]

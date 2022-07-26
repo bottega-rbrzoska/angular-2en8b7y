@@ -5,7 +5,7 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
-    "backend": "json-server db.json",
+    "backend": "json-server db.json --delay=2000",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },

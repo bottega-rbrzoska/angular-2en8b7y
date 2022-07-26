@@ -3,4 +3,14 @@
   <a routerLink="/contact" routerLinkActive="active">Contact</a>
   <a routerLink="/test" routerLinkActive="active">Test</a>
   <a routerLink="/products" routerLinkActive="active">Products</a>
+  <a routerLink="/standalone" routerLinkActive="active">Standalone Comp.</a>
+<div *ngIf="auth$ | async as user; else loginBtn">
+  <span>{{user.username}}</span>
+  <button (click)="logout()">Logout</button>
+</div>
 </nav>
+<ng-template #loginBtn>
+  <div>
+    <button (click)="login()">Login</button>
+  </div>
+</ng-template>

@@ -46,6 +46,9 @@
     "username": "Grażyna Januszowa",
     "admin": false
   }
-]
+],
+"test": {
+  "testData": 1
+}
 
 }

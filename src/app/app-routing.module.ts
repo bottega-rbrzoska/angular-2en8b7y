@@ -10,6 +10,7 @@ const routes: Routes = [
   { path: 'contact', component: ContactComponent },
   { path: 'test', component: MyTestComponent},
   { path: 'products', loadChildren: () => import('./products/products.module').then(m => m.ProductsModule ) },
+  { path: 'standalone', loadComponent: () => import('./standalone/standalone.component').then(m => m.StandaloneComponent ) },
   { path: '**', component: PageNotFoundComponent }
 ];
 

@@ -1,6 +1,8 @@
 <h2>my test text:</h2>
-<p class="red-box">{{testData}}</p>
+<ng-template [dtiqTestIf]="true"><p class="red-box" >{{testData}}</p></ng-template>
+<button #testBtn>Fetch test data</button>
+
 <div *ngFor="let user of testUserArr">
-  {{user.name}} <span *ngIf="user.age > 60" [ngClass]="{'red-text': user.age > 60 }">({{user.age}})</span>
+  {{user.username}} <span *ngIf="user.admin" [ngClass]="{'red-text': user.admin }">(ADMIN)</span>
 </div>
 <dtiq-test-child [myInputData]="testData" (myOutputEvent)="handleChildOutput($event)"></dtiq-test-child>

@@ -1,5 +1,6 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
 import { Test, User } from '@dtiq/models';
+import { concatMap, exhaustMap, fromEvent, mergeMap, switchMap } from 'rxjs';
 import { TestService } from 'src/app/test.service';
 
 @Component({
@@ -9,15 +10,18 @@ import { TestService } from 'src/app/test.service';
 })
 export class MyTestComponent implements OnInit {
 
+  @ViewChild('testBtn', { static: true }) testBtn!: ElementRef<HTMLButtonElement>
   testData = 'myTestString';
   counter = 0;
 
   testUserArr: User[] = [{
-    name: 'Alojzy',
-    age: 56
+    username: 'Alojzy',
+    admin: false,
+    id: 'alojzy'
   }, {
-    name: 'Jarosław',
-    age: 70
+    username: 'Jarosław',
+    admin: false,
+    id: 'alojzy'
   }]
   testArr: Test[] = []
   constructor( private _test: TestService) { }
@@ -27,6 +31,15 @@ export class MyTestComponent implements OnInit {
     //     this.counter++;
     //     this.testData += this.counter;
     // }, 2000)
+
+    fromEvent(this.testBtn.nativeElement, 'click')
+    .pipe(
+      //switchMap(() => this._test.getTestData())
+      //exhaustMap(() => this._test.getTestData())
+      //mergeMap((c) => this._test.getTestData())
+      //concatMap((c) => this._test.getTestData())
+
+    ).subscribe(c => console.log('element', c) )
   }
   handleChildOutput(data: string) {
     console.log(data)

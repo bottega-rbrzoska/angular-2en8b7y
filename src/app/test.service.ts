@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { ReplaySubject } from 'rxjs';
 import { AsyncSubject } from 'rxjs';
@@ -23,7 +24,8 @@ export class TestService {
   private aSubj = new AsyncSubject();
   private obs2$ = fromEvent(window.document, 'click')
 
-  constructor() {
+  constructor(private _http: HttpClient) {
+
     this.subj.subscribe(x => console.log(x));
     this.subj.next(2)
     this.subj.subscribe(x => console.log(x));
@@ -41,5 +43,9 @@ export class TestService {
 
    refreshData() {
     this.bSubj.next(this.bSubj.value+'1')
+   }
+
+   getTestData() {
+    return this._http.get<any>('http://localhost:3000/test')
    }
 }
