@@ -1,1 +1,10 @@
-<p>product-form works!</p>
+<form [formGroup]="productForm" #myProductForm="ngForm" (submit)="submit(myProductForm)">
+  Name: <input formControlName="name">
+  Description: <textarea formControlName="description"></textarea>
+  Price: <input formControlName="price">
+  <button>Submit</button>
+</form>
+<button (click)="reset()">Reset</button>
+<pre>
+  {{productForm.value | json}}
+</pre>

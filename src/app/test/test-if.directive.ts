@@ -1,4 +1,4 @@
-import { Directive, ElementRef, Input, Renderer2, TemplateRef, ViewContainerRef } from '@angular/core';
+import { Directive, ElementRef, HostListener, Input, Renderer2, TemplateRef, ViewContainerRef } from '@angular/core';
 import { TestService } from '../test.service';
 
 @Directive({
@@ -34,4 +34,8 @@ constructor(private template: TemplateRef<any>,
   private _test: TestService){
 }
 
+@HostListener('click')
+  handleClick() {
+
+  }
 }
