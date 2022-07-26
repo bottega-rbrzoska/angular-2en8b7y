@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Product } from '@dtiq/models';
+import { LoggerService } from 'src/app/core/logger.service';
+import { ProductService } from '../product.service';
 
 @Component({
   selector: 'dtiq-product-list',
@@ -8,25 +10,11 @@ import { Product } from '@dtiq/models';
 })
 export class ProductListComponent implements OnInit {
 
-  products: Product[] = [{
-    id: '1',
-    description: 'Prod1 descr',
-    name: 'Product One',
-    price: 7.99
-  }, {
-    id: '2',
-    description: 'Prod2 descr',
-    name: 'Product One',
-    price: 0.99
-  }, {
-    id: '3',
-    description: 'Prod3 descr',
-    name: 'Product Three',
-    price: 17.99
-  }]
-  constructor() { }
+  products: Product[] = [];
+  constructor(private _productService: ProductService) { }
 
   ngOnInit(): void {
+    this.products = this._productService.getProducts()
   }
 
 }

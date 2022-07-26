@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { LoggerService } from '../core/logger.service';
 
 @Component({
   selector: 'dtiq-contact',
@@ -7,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ContactComponent implements OnInit {
 
-  constructor() { }
+  constructor(private _logger: LoggerService) { }
 
   ngOnInit(): void {
   }

@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Optional } from '@angular/core';
+import { LoggerService } from '../core/logger.service';
 
 @Component({
   selector: 'dtiq-home',
@@ -7,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  constructor(@Optional() private _loggerService: LoggerService) { }
 
   ngOnInit(): void {
   }
