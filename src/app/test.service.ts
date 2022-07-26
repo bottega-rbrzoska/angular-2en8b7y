@@ -11,6 +11,8 @@ import { from, fromEvent, Observable, of } from 'rxjs';
 })
 export class TestService {
 
+  private showFlagSubj = new BehaviorSubject<boolean>(false)
+  showFlag$ = this.showFlagSubj.asObservable();
   obs1$ = new Observable((obs) => {
     obs.next(1);
     obs.error('error');
@@ -40,7 +42,9 @@ export class TestService {
     console.log(this.bSubj.value)
    }
 
-
+   toggleShow(){
+    this.showFlagSubj.next(!this.showFlagSubj.value)
+   }
    refreshData() {
     this.bSubj.next(this.bSubj.value+'1')
    }
