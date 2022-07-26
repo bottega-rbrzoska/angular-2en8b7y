@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Product } from '@dtiq/models';
-import { LoggerService } from 'src/app/core/logger.service';
+import { Observable } from 'rxjs';
 import { ProductService } from '../product.service';
 
 @Component({
@@ -10,11 +10,11 @@ import { ProductService } from '../product.service';
 })
 export class ProductListComponent implements OnInit {
 
-  products: Product[] = [];
+  products$!: Observable<Product[]>;
   constructor(private _productService: ProductService) { }
 
   ngOnInit(): void {
-    this.products = this._productService.getProducts()
+    this.products$ = this._productService.getProducts()
   }
 
 }

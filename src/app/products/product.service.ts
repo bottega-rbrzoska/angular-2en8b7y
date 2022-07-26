@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Product } from '../models/Product';
 
@@ -20,9 +21,9 @@ export class ProductService {
     name: 'Product Three',
     price: 17.99
   }]
-  constructor() { }
+  constructor(private _httpClient: HttpClient) { }
 
   getProducts() {
-    return this._products;
+    return this._httpClient.get<Product[]>('http://localhost:3000/products');
   }
 }

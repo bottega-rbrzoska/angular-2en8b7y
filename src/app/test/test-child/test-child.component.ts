@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Optional, Output, SimpleChange, SimpleChanges } from '@angular/core';
+import { ApplicationRef, ChangeDetectorRef, Component, EventEmitter, Input, NgZone, OnInit, Optional, Output, SimpleChange, SimpleChanges } from '@angular/core';
 import { AppComponent } from 'src/app/app.component';
 import { MyTestComponent } from '../my-test/my-test.component';
 
@@ -17,8 +17,12 @@ export class TestChildComponent implements OnInit {
   };
 
   @Output() myOutputEvent = new EventEmitter<string>()
-  constructor( @Optional() private parent: AppComponent) {
-    console.log(parent)
+  constructor( @Optional() private parent: AppComponent,
+  private cdRef: ChangeDetectorRef, ngZone: NgZone) {
+   ngZone.runOutsideAngular(() => {
+
+   })
+    console.log(parent);
     if(!parent) {
       console.warn('TestChild can be only used as MyTest child')
     }
