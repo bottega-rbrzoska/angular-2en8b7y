@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { Component, OnInit } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
 @Component({
@@ -9,11 +9,6 @@ import { RouterModule } from '@angular/router';
   templateUrl: './standalone.component.html',
   styleUrls: ['./standalone.component.scss']
 })
-export class StandaloneComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
+export class StandaloneComponent {
+  constructor() {}
 }

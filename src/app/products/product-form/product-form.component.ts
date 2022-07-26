@@ -7,24 +7,22 @@ import { FormControl, FormGroup } from '@angular/forms';
   styleUrls: ['./product-form.component.scss']
 })
 export class ProductFormComponent implements OnInit {
-
   productForm = new FormGroup({
-    name: new FormControl<string | null>('test', { nonNullable: true}),
+    name: new FormControl<string | null>('test', { nonNullable: true }),
     description: new FormControl<string | null>(null),
     price: new FormControl<number | null>(null)
-  })
-  constructor() { }
+  });
+  constructor() {}
 
   ngOnInit(): void {
-    let name = this.productForm.get('name')
+    let name = this.productForm.get('name');
   }
 
   submit(value: any) {
-    console.log(value)
+    console.log(value);
   }
 
-  reset(){
+  reset() {
     this.productForm.reset();
   }
-
 }

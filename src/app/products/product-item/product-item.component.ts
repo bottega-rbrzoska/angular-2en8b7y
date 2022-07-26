@@ -7,12 +7,7 @@ import { Product } from '@dtiq/models';
   templateUrl: './product-item.component.html',
   styleUrls: ['./product-item.component.scss']
 })
-export class ProductItemComponent implements OnInit {
-
+export class ProductItemComponent {
   @Input() product!: Product;
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
+  constructor() {}
 }

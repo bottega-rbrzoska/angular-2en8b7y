@@ -1,0 +1,147 @@
+{
+  "root": true,
+  "ignorePatterns": [
+    "projects/**/*"
+  ],
+  "overrides": [
+    {
+      "files": [
+        "*.ts"
+      ],
+      "parserOptions": {
+        "project": [
+          "tsconfig.json"
+        ],
+        "createDefaultProgram": true
+      },
+      "extends": [
+        "plugin:@angular-eslint/recommended",
+        "plugin:@angular-eslint/template/process-inline-templates",
+        "prettier",
+        "plugin:prettier/recommended"
+      ],
+      "plugins": [
+        "rxjs",
+        "import"
+      ],
+      "rules": {
+        "prettier/prettier": [
+          "error",
+          {
+            "printWidth": 140,
+            "tabWidth": 2,
+            "useTabs": false,
+            "semi": true,
+            "singleQuote": true,
+            "trailingComma": "none",
+            "bracketSpacing": true,
+            "endOfLine": "auto"
+          }
+        ],
+        "max-len":  [2, { "code": 150, "ignorePattern": "^import .*" }],
+        "no-underscore-dangle": "off",
+        "@typescript-eslint/naming-convention": [
+          "error",
+          {
+            "selector": "memberLike",
+            "modifiers": [
+              "private"
+            ],
+            "format": [
+              "camelCase"
+            ],
+            "leadingUnderscore": "require"
+          }
+        ],
+        "rxjs/finnish": [
+          "error",
+          {
+            "functions": false,
+            "methods": false,
+            "parameters": false,
+            "properties": true,
+            "variables": true,
+            "names": {
+              "Subj$": false
+            },
+            "types": {
+              "^EventEmitter$": false
+            }
+          }
+        ],
+        "@angular-eslint/directive-selector": [
+          "error",
+          {
+            "type": "attribute",
+            "prefix": "dtiq",
+            "style": "camelCase"
+          }
+        ],
+        "@angular-eslint/component-selector": [
+          "error",
+          {
+            "type": "element",
+            "prefix": "dtiq",
+            "style": "kebab-case"
+          }
+        ],
+        "no-shadow": "off",
+        "@typescript-eslint/no-shadow": [
+          "error"
+        ],
+        "import/order": [
+          "error",
+          {
+            "groups": [
+              "builtin",
+              "external",
+              "internal",
+              [
+                "index",
+                "sibling",
+                "parent",
+                "object"
+              ]
+            ],
+            "pathGroupsExcludedImportTypes": [
+              "builtin"
+            ],
+            "pathGroups": [
+              {
+                "pattern": "^@angular",
+                "group": "builtin",
+                "position": "after"
+              },
+              {
+                "pattern": "^rxjs/**",
+                "group": "external",
+                "position": "after"
+              },
+              {
+                "pattern": "@dx/**",
+                "group": "internal",
+                "position": "after"
+              }
+            ],
+            "newlines-between": "always",
+            "alphabetize": {
+              "order": "asc",
+              "caseInsensitive": true
+            }
+          }
+        ]
+      }
+    },
+    {
+      "files": [
+        "*.html"
+      ],
+      "extends": [
+        "plugin:@angular-eslint/template/recommended"
+      ],
+      "rules": {
+        "no-underscore-dangle": "off"
+      }
+    }
+  ]
+}

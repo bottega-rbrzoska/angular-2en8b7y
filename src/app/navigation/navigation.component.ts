@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
+
 import { AuthService } from '../core/auth.service';
 import { User } from '../models/User';
 
@@ -8,22 +9,17 @@ import { User } from '../models/User';
   templateUrl: './navigation.component.html',
   styleUrls: ['./navigation.component.scss']
 })
-export class NavigationComponent implements OnInit {
-
+export class NavigationComponent {
   auth$!: Observable<User | null>;
   constructor(private _auth: AuthService) {
     this.auth$ = this._auth.authData$;
   }
 
-  ngOnInit(): void {
-  }
-
-  login(){
+  login() {
     this._auth.login();
   }
 
   logout() {
     this._auth.logout();
   }
-
 }

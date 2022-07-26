@@ -3,15 +3,15 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { MyTestComponent } from './test/my-test/my-test.component';
 import { ContactComponent } from './contact/contact.component';
+import { CoreModule } from './core/core.module';
 import { HomeComponent } from './home/home.component';
 import { NavigationComponent } from './navigation/navigation.component';
-import { TestChildComponent } from './test/test-child/test-child.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
-import { CoreModule } from './core/core.module';
-import { TestIfDirective } from './test/test-if.directive';
 import { SharedModule } from './shared/shared.module';
+import { MyTestComponent } from './test/my-test/my-test.component';
+import { TestChildComponent } from './test/test-child/test-child.component';
+import { TestIfDirective } from './test/test-if.directive';
 
 @NgModule({
   declarations: [
@@ -23,12 +23,8 @@ import { SharedModule } from './shared/shared.module';
     TestChildComponent,
     PageNotFoundComponent
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule, CoreModule,
-    SharedModule
-  ],
+  imports: [BrowserModule, AppRoutingModule, CoreModule, SharedModule],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}
