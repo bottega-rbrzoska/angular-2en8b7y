@@ -1,9 +1,19 @@
 <form [formGroup]="productForm" #myProductForm="ngForm" (submit)="submit(myProductForm)">
-  Name: <input formControlName="name">
-  Description: <textarea formControlName="description"></textarea>
-  Price: <input formControlName="price">
-  <my-custom-control formControlName="customvalue"></my-custom-control>
-  <button>Submit</button>
+  <div>
+    Name: <input formControlName="name">
+  </div>
+  <div>
+    Description: <textarea formControlName="description"></textarea>
+  </div>
+  <div>
+    Price: <input formControlName="price">
+  </div>
+  <div>
+    Framework: <dtiq-framework-selector formControlName="framework"></dtiq-framework-selector>
+  </div>
+  <div>
+    <button>Submit</button>
+  </div>
 </form>
 <button (click)="reset()">Reset</button>
 <pre>
