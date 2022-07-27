@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AuthService } from './core/auth.service';
 
 @Component({
   selector: 'dtiq-root',
@@ -7,5 +8,7 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'dtiq';
-  constructor() {}
+  constructor(private _auth: AuthService) {
+    this._auth.init();
+  }
 }

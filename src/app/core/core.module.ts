@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
+import { OAuthModule } from 'angular-oauth2-oidc';
 
 import { INTERCEPTORS } from './interceptors';
 import { LoggerInterceptor } from './logger.interceptor';
@@ -10,7 +11,8 @@ import { LoggerService } from './logger.service';
 
 @NgModule({
   declarations: [],
-  imports: [CommonModule, HttpClientModule],
+  imports: [CommonModule, HttpClientModule,
+    OAuthModule.forRoot()],
   providers: [
     ...INTERCEPTORS,
     LoggerService
