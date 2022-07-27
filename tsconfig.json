@@ -1,4 +1,3 @@
-/* To learn more about this file see: https://angular.io/config/tsconfig. */
 {
   "compileOnSave": false,
   "compilerOptions": {
@@ -23,7 +22,12 @@
       "dom"
     ],
     "paths": {
-      "@dtiq/models": ["src/app/models/index.ts"]
+      "@dtiq/models": [
+        "src/app/models/index.ts"
+      ],
+      "mf-shared-lib": [
+        "dist/mf-shared-lib"
+      ],
     }
   },
   "angularCompilerOptions": {

@@ -4,6 +4,7 @@
   <a routerLink="/test" routerLinkActive="active">Test</a>
   <a routerLink="/products" routerLinkActive="active">Products</a>
   <a routerLink="/standalone" routerLinkActive="active">Standalone Comp.</a>
+  <a routerLink="/mf1" routerLinkActive="active">MF1</a>
 <div *ngIf="auth$ | async as user; else loginBtn">
   <span>{{user.username}}</span>
   <button (click)="logout()">Logout</button>

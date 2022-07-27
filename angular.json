@@ -16,7 +16,7 @@
       "prefix": "dtiq",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:browser",
+          "builder": "ngx-build-plus:browser",
           "options": {
             "outputPath": "dist/dtiq",
             "index": "src/index.html",
@@ -31,7 +31,9 @@
             "styles": [
               "src/styles.scss"
             ],
-            "scripts": []
+            "scripts": [],
+            "extraWebpackConfig": "webpack.config.js",
+            "commonChunk": false
           },
           "configurations": {
             "production": {
@@ -53,7 +55,8 @@
                   "with": "src/environments/environment.prod.ts"
                 }
               ],
-              "outputHashing": "all"
+              "outputHashing": "all",
+              "extraWebpackConfig": "webpack.prod.config.js"
             },
             "development": {
               "buildOptimizer": false,
@@ -67,21 +70,28 @@
           "defaultConfiguration": "production"
         },
         "serve": {
-          "builder": "@angular-devkit/build-angular:dev-server",
+          "builder": "ngx-build-plus:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "dtiq:build:production"
+              "browserTarget": "dtiq:build:production",
+              "extraWebpackConfig": "webpack.prod.config.js"
             },
             "development": {
               "browserTarget": "dtiq:build:development"
             }
           },
-          "defaultConfiguration": "development"
+          "defaultConfiguration": "development",
+          "options": {
+            "port": 5000,
+            "publicHost": "http://localhost:5000",
+            "extraWebpackConfig": "webpack.config.js"
+          }
         },
         "extract-i18n": {
-          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "builder": "ngx-build-plus:extract-i18n",
           "options": {
-            "browserTarget": "dtiq:build"
+            "browserTarget": "dtiq:build",
+            "extraWebpackConfig": "webpack.config.js"
           }
         },
         "test": {
@@ -108,6 +118,165 @@
             "lintFilePatterns": [
               "src/**/*.ts",
               "src/**/*.html"
+            ]
+          }
+        }
+      }
+    },
+    "mf1": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
+      "root": "projects/mf1",
+      "sourceRoot": "projects/mf1/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "ngx-build-plus:browser",
+          "options": {
+            "outputPath": "dist/mf1",
+            "index": "projects/mf1/src/index.html",
+            "main": "projects/mf1/src/main.ts",
+            "polyfills": "projects/mf1/src/polyfills.ts",
+            "tsConfig": "projects/mf1/tsconfig.app.json",
+            "inlineStyleLanguage": "scss",
+            "assets": [
+              "projects/mf1/src/favicon.ico",
+              "projects/mf1/src/assets"
+            ],
+            "styles": [
+              "projects/mf1/src/styles.scss"
+            ],
+            "scripts": [],
+            "extraWebpackConfig": "projects/mf1/webpack.config.js",
+            "commonChunk": false
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kb",
+                  "maximumError": "1mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "2kb",
+                  "maximumError": "4kb"
+                }
+              ],
+              "fileReplacements": [
+                {
+                  "replace": "projects/mf1/src/environments/environment.ts",
+                  "with": "projects/mf1/src/environments/environment.prod.ts"
+                }
+              ],
+              "outputHashing": "all",
+              "extraWebpackConfig": "projects/mf1/webpack.prod.config.js"
+            },
+            "development": {
+              "buildOptimizer": false,
+              "optimization": false,
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "ngx-build-plus:dev-server",
+          "configurations": {
+            "production": {
+              "browserTarget": "mf1:build:production",
+              "extraWebpackConfig": "projects/mf1/webpack.prod.config.js"
+            },
+            "development": {
+              "browserTarget": "mf1:build:development"
+            }
+          },
+          "defaultConfiguration": "development",
+          "options": {
+            "port": 5001,
+            "publicHost": "http://localhost:5001",
+            "extraWebpackConfig": "projects/mf1/webpack.config.js"
+          }
+        },
+        "extract-i18n": {
+          "builder": "ngx-build-plus:extract-i18n",
+          "options": {
+            "browserTarget": "mf1:build",
+            "extraWebpackConfig": "projects/mf1/webpack.config.js"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/mf1/src/test.ts",
+            "polyfills": "projects/mf1/src/polyfills.ts",
+            "tsConfig": "projects/mf1/tsconfig.spec.json",
+            "karmaConfig": "projects/mf1/karma.conf.js",
+            "inlineStyleLanguage": "scss",
+            "assets": [
+              "projects/mf1/src/favicon.ico",
+              "projects/mf1/src/assets"
+            ],
+            "styles": [
+              "projects/mf1/src/styles.scss"
+            ],
+            "scripts": []
+          }
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": [
+              "projects/mf1/**/*.ts",
+              "projects/mf1/**/*.html"
+            ]
+          }
+        }
+      }
+    },
+    "mf-shared-lib": {
+      "projectType": "library",
+      "root": "projects/mf-shared-lib",
+      "sourceRoot": "projects/mf-shared-lib/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/mf-shared-lib/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/mf-shared-lib/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/mf-shared-lib/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/mf-shared-lib/src/test.ts",
+            "tsConfig": "projects/mf-shared-lib/tsconfig.spec.json",
+            "karmaConfig": "projects/mf-shared-lib/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": [
+              "projects/mf-shared-lib/**/*.ts",
+              "projects/mf-shared-lib/**/*.html"
             ]
           }
         }

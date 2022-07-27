@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { MfSharedLibModule } from 'mf-shared-lib';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -11,7 +12,6 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { SharedModule } from './shared/shared.module';
 import { MyTestComponent } from './test/my-test/my-test.component';
 import { TestChildComponent } from './test/test-child/test-child.component';
-import { TestIfDirective } from './test/test-if.directive';
 
 @NgModule({
   declarations: [
@@ -23,7 +23,7 @@ import { TestIfDirective } from './test/test-if.directive';
     TestChildComponent,
     PageNotFoundComponent
   ],
-  imports: [BrowserModule, AppRoutingModule, CoreModule, SharedModule],
+  imports: [BrowserModule, AppRoutingModule, CoreModule, SharedModule, MfSharedLibModule.forRoot()],
   providers: [],
   bootstrap: [AppComponent]
 })

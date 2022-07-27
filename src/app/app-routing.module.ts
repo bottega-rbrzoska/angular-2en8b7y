@@ -12,13 +12,14 @@ const routes: Routes = [
   { path: 'test', component: MyTestComponent },
   { path: 'products', loadChildren: () => import('./products/products.module').then((m) => m.ProductsModule) },
   { path: 'standalone', loadComponent: () => import('./standalone/standalone.component').then((m) => m.StandaloneComponent) },
+  { path: 'mf1', loadChildren: () => import('mfe1/AppModule').then((m) => m.AppModule) },
   { path: '**', component: PageNotFoundComponent }
 ];
 
 @NgModule({
   imports: [
     RouterModule.forRoot(routes, {
-      preloadingStrategy: PreloadAllModules
+      // preloadingStrategy: PreloadAllModules
     })
   ],
   exports: [RouterModule]

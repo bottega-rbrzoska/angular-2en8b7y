@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { MfSharedLibService } from 'mf-shared-lib';
 import { AuthService } from './core/auth.service';
 
 @Component({
@@ -8,7 +9,11 @@ import { AuthService } from './core/auth.service';
 })
 export class AppComponent {
   title = 'dtiq';
-  constructor(private _auth: AuthService) {
-    this._auth.init();
+  constructor(private _auth: AuthService, private _sharedLib: MfSharedLibService) {
+    //this._auth.init();
+  }
+
+  changeData() {
+    this._sharedLib.changeData('from app component'+ Math.random());
   }
 }
